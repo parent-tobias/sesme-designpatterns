@@ -2,14 +2,19 @@
   "name": "sesme-designpatterns",
   "version": "0.1.0",
   "description": "A demo package for testing design patterns",
+  "main": "dist/index.js",
   "keywords": [
     "demo",
     "design-patterns"
   ],
   "scripts": {
     "build": "tsc",
-    "ci": "npm run build",
-    "format": "prettier --write ."
+		"dev": "vitest",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run test",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+		"test": "vitest run"
   },
   "homepage": "https://github.com/parent-tobias/sesme-designpatterns",
   "bugs": {
@@ -26,7 +31,9 @@
   "type": "module",
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   }
 }
